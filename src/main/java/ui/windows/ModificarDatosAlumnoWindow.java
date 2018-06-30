@@ -1,6 +1,7 @@
-package main.java.ui.windows;
+package ui.windows;
 
 import org.uqbar.arena.bindings.ObservableProperty;
+
 
 import org.uqbar.arena.bindings.PropertyAdapter;
 import org.uqbar.arena.layout.ColumnLayout;
@@ -10,7 +11,7 @@ import org.uqbar.arena.windows.WindowOwner;
 
 import org.uqbar.lacar.ui.model.ListBuilder;
 import org.uqbar.lacar.ui.model.bindings.Binding;
-import main.java.ui.vm.*;
+import ui.vm.*;
 
 public class ModificarDatosAlumnoWindow extends Dialog<ModificarDatosAlumnoViewModel> {
 

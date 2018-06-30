@@ -1,6 +1,7 @@
-package main.java.model;
+package model;
 
 import java.util.List;
+
 import model.Asignacion;
 
 import org.uqbar.commons.utils.Observable;

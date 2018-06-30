@@ -1,8 +1,9 @@
-package main.java.ui.vm;
+package ui.vm;
 
 import org.uqbar.commons.utils.Observable;
 
-import main.java.model.*;
+
+import model.*;
 
 import java.util.List;
 
