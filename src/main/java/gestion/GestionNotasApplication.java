@@ -1,4 +1,4 @@
-package gestion;
+package main.java.gestion;
 
 public class GestionNotasApplication {
 
