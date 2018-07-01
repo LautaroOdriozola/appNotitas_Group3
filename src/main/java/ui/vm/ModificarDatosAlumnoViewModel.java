@@ -5,6 +5,7 @@ import java.util.List;
 
 
 import model.*;
+import repositories.RepoEstudiantes;
 
 import org.uqbar.commons.utils.Observable;
 
@@ -50,6 +51,10 @@ public class ModificarDatosAlumnoViewModel{
 	
 	public String getusuarioGithub() {
 		return usuarioGithub;
+	}
+	
+	public void procesarCambios() {
+		RepoEstudiantes.getInstance().modificar(alumnoSeleccionado);
 	}
 
 

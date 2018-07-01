@@ -25,17 +25,17 @@ public class ModificarDatosAlumnoWindow extends Dialog<ModificarDatosAlumnoViewM
 		form.setLayout(new ColumnLayout(2));
 		
 		new Label(form).setText("Nombre alumno:");
-		new Field(form) //no se como es el field
+		new TextBox(form) 
         .setWidth(150)
 		.bindValueToProperty("nombre"); 
 
 		new Label(form).setText("Legajo:");
-		new Field(form) //no se como es el field
+		new TextBox(form) 
                 .setWidth(150)
 				.bindValueToProperty("legajo");
 		
 		new Label(form).setText("Usuario github:");
-		new Field(form) //no se como es el field
+		new TextBox(form) 
                 .setWidth(150)
 				.bindValueToProperty("usuarioGithub");
 	}

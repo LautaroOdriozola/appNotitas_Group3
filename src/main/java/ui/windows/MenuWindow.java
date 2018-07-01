@@ -17,6 +17,7 @@ import org.uqbar.lacar.ui.model.ListBuilder;
 import org.uqbar.lacar.ui.model.bindings.Binding;
 
 import ui.vm.*;
+import model.Estudiante;
 
 public class MenuWindow extends SimpleWindow<MenuViewModel> {
 
@@ -38,8 +39,8 @@ public class MenuWindow extends SimpleWindow<MenuViewModel> {
 	protected void createFormPanel(Panel formPanel) {
 		this.setTitle("Bienvenido al sistema de gestion de notas");
 
-		new Label(form).setText("Estudiante:");
-		Selector<Estudiante> selectorEstudiante = new Selector<Estudiante>(form).allowNull(true);
+		new Label(formPanel).setText("Estudiante:");
+		Selector<Estudiante> selectorEstudiante = new Selector<Estudiante>(formPanel).allowNull(true);
 		selectorEstudiante.bindValueToProperty("estudianteElegido");
 
 		Binding<Estudiante, Selector<Estudiante>, ListBuilder<Estudiante>> binding =
@@ -52,14 +53,17 @@ public class MenuWindow extends SimpleWindow<MenuViewModel> {
 
 	private void modificarDatos() {
 		Dialog<?> dialog = new ModificarDatosAlumnoWindow(this);
-		dialog.onAccept(() -> {}); //setearle el estudiante elegido
+		dialog.onAccept(() ->
+        this.getModelObject().setEstudiantes(
+           RepoEstudiantes.getInstance().all()
+        )
+		);
 		dialog.open();
 
 	}
 	
 	private void VerNota() {
 		Dialog<?> dialog = new VerNotaAlumnoWindow(this);
-		dialog.onAccept(() -> {}); //setearle el estudiante elegido
 		dialog.open();
 
 	}

@@ -2,8 +2,8 @@ package ui.vm;
 
 import org.uqbar.commons.utils.Observable;
 
-
 import model.*;
+import repositories.RepoEstudiantes;
 
 import java.util.List;
 
@@ -12,8 +12,10 @@ public class MenuViewModel {
 	
 
 	private Estudiante alumnoSeleccionado;
+	private List<Estudiante> estudiantes;
+	
 	public MenuViewModel() {
-		super();
+		this.estudiantes = RepoEstudiantes.getInstance().all();
 	}
 
 	public Estudiante getAlumnoSeleccionado() {
@@ -22,6 +24,14 @@ public class MenuViewModel {
 	
 	public void setAlumnoSeleccionado(Estudiante _a) {
 		 alumnoSeleccionado = _a;
+	}
+	
+	public void setEstudiantes(List<Estudiante> est) {
+		estudiantes = est;
+	}
+	
+	public List<Estudiante> getEstudiantes() {
+		return estudiantes;
 	}
 
 

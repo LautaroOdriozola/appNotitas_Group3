@@ -1,8 +1,7 @@
 package ui.vm;
 
 import model.*;
-
-
+import repositories.RepoEstudiantes;
 
 import org.uqbar.commons.utils.Observable;
 
@@ -15,7 +14,7 @@ public class VerNotaAlumnoViewModel {
 	private List<Asignacion> asignaciones;
 
 	public VerNotaAlumnoViewModel() {
-		super();
+		this.asignaciones = estudianteSeleccionado.getAsignaciones();
 	}
 
 	public List<Asignacion> getAsignaciones() {

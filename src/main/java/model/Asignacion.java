@@ -12,7 +12,7 @@ public class Asignacion{
 	boolean califNumerica;
 	
 	
-	public int obtenerUltimaNota() {
+	public int getUltimaNota() {
 		return notas.get(0);
 	}
 	
@@ -25,11 +25,12 @@ public class Asignacion{
 		return nombre;
 	}
 	
-	public boolean estaAprobada() {
+	public boolean getEstaAprobada() {
 		if(califNumerica) {
-			return this.obtenerUltimaNota() >= 6;
+			return this.getUltimaNota() >= 6;
 		}else {
-			return this.obtenerUltimaNota() == 'B';
+			return this.getUltimaNota() == 'B';
+			//TODO: faltarian mas casos
 		}
 
 	}
