@@ -8,11 +8,17 @@ import model.Estudiante;
 public class RepoEstudiantes {
 
 	private static RepoEstudiantes instance;
+	private Estudiante estudianteSeleccionado;
 	private List<Estudiante> estudiantes = new ArrayList<>();
 
 	private RepoEstudiantes() {
 
 	}
+	
+	public void nuevoEstudiante(Estudiante _e) {
+		estudiantes.add(_e);
+	}
+
 
 	public static RepoEstudiantes getInstance() {
 		if (instance == null) instance = new RepoEstudiantes();
@@ -24,8 +30,11 @@ public class RepoEstudiantes {
 		return this.estudiantes;
 	}
 
-	public void modificar(Estudiante _est) {
-		//TODO: eliminar estudiante
-		//TODO: agregarlo de nuevo
+	public Estudiante getEstudianteSeleccionado() {
+		return estudianteSeleccionado;
+	}
+	
+	public void setEstudianteSeleccionado(Estudiante _est) {
+		estudianteSeleccionado = _est;
 	}
 }

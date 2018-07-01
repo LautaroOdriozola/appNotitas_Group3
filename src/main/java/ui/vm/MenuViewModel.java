@@ -24,6 +24,7 @@ public class MenuViewModel {
 	
 	public void setAlumnoSeleccionado(Estudiante _a) {
 		 alumnoSeleccionado = _a;
+		 RepoEstudiantes.getInstance().setEstudianteSeleccionado(alumnoSeleccionado);
 	}
 	
 	public void setEstudiantes(List<Estudiante> est) {

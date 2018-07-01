@@ -14,6 +14,7 @@ public class VerNotaAlumnoViewModel {
 	private List<Asignacion> asignaciones;
 
 	public VerNotaAlumnoViewModel() {
+		estudianteSeleccionado = RepoEstudiantes.getInstance().getEstudianteSeleccionado();
 		this.asignaciones = estudianteSeleccionado.getAsignaciones();
 	}
 
@@ -29,7 +30,4 @@ public class VerNotaAlumnoViewModel {
 		asignaciones = estudianteSeleccionado.getAsignaciones();
 	}
 	
-	public void mostrarNotas() {
-		//como hago q las muestre??
-	}
 }

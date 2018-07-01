@@ -1,12 +1,8 @@
 package ui.vm;
 
 import java.util.List;
-
-
-
 import model.*;
 import repositories.RepoEstudiantes;
-
 import org.uqbar.commons.utils.Observable;
 
 @Observable
@@ -18,7 +14,7 @@ public class ModificarDatosAlumnoViewModel{
 	String usuarioGithub;
 
 	public ModificarDatosAlumnoViewModel() {
-		super();
+		alumnoSeleccionado = RepoEstudiantes.getInstance().getEstudianteSeleccionado();
 	}
 
 	public Estudiante getAlumnoSeleccionado() {
@@ -54,7 +50,9 @@ public class ModificarDatosAlumnoViewModel{
 	}
 	
 	public void procesarCambios() {
-		RepoEstudiantes.getInstance().modificar(alumnoSeleccionado);
+		alumnoSeleccionado.setLegajo(legajo);
+		alumnoSeleccionado.setNombre(nombre);
+		alumnoSeleccionado.setusuarioGithub(usuarioGithub);
 	}
 
 
