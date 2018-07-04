@@ -2,8 +2,7 @@ package model;
 
 import java.util.List;
 
-import org.uqbar.commons.model.annotations.Observable;
-//import org.uqbar.commons.utils.Observable;
+import org.uqbar.commons.utils.Observable;
 
 @Observable
 public class Asignacion{

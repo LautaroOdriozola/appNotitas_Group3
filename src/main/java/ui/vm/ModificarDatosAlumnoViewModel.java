@@ -1,6 +1,7 @@
 package ui.vm;
 
 import java.util.List;
+
 import model.*;
 import repositories.RepoEstudiantes;
 import org.uqbar.commons.utils.Observable;
@@ -50,9 +51,9 @@ public class ModificarDatosAlumnoViewModel{
 	}
 	
 	public void procesarCambios() {
-		alumnoSeleccionado.setLegajo(legajo);
-		alumnoSeleccionado.setNombre(nombre);
-		alumnoSeleccionado.setusuarioGithub(usuarioGithub);
+		// Creo estudiante y lo agrego al repo. Hay que chequear si ya estaba asi no se agregan varios
+		Estudiante estudiante = new Estudiante(nombre,legajo,usuarioGithub);
+		RepoEstudiantes .getInstance().nuevoEstudiante(estudiante);
 	}
 
 

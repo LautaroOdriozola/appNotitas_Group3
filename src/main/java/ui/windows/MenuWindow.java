@@ -2,14 +2,14 @@ package ui.windows;
 
 import org.uqbar.arena.bindings.ObservableProperty;
 
-
-import org.uqbar.arena.bindings.PropertyAdapter;
+import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Button;
+import org.uqbar.arena.bindings.PropertyAdapter;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.Selector;
-import org.uqbar.arena.widgets.tables.Column;
-import org.uqbar.arena.widgets.tables.LabelProviderBuilder;
-import org.uqbar.arena.widgets.tables.Table;
+//import org.uqbar.arena.widgets.tables.Column;
+//import org.uqbar.arena.widgets.tables.LabelProviderBuilder;
+//import org.uqbar.arena.widgets.tables.Table;
 import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.SimpleWindow;
 import org.uqbar.arena.windows.WindowOwner;
@@ -17,6 +17,7 @@ import org.uqbar.lacar.ui.model.ListBuilder;
 import org.uqbar.lacar.ui.model.bindings.Binding;
 
 import ui.vm.*;
+import repositories.RepoEstudiantes;
 import model.Estudiante;
 
 public class MenuWindow extends SimpleWindow<MenuViewModel> {
@@ -27,9 +28,9 @@ public class MenuWindow extends SimpleWindow<MenuViewModel> {
 
 	@Override
 	protected void addActions(Panel panelActions) {
-		new Button(panelActions)
+	/*	new Button(panelActions)
 		.setCaption("Ver ultima nota")
-		.onClick(this::verNota);
+		.onClick(this::verNota);*/
 		
 		new Button(panelActions)
 		.setCaption("Modificar datos")
@@ -38,10 +39,10 @@ public class MenuWindow extends SimpleWindow<MenuViewModel> {
 
 	protected void createFormPanel(Panel formPanel) {
 		this.setTitle("Bienvenido al sistema de gestion de notas");
-
+		
 		new Label(formPanel).setText("Estudiante:");
 		Selector<Estudiante> selectorEstudiante = new Selector<Estudiante>(formPanel).allowNull(true);
-		selectorEstudiante.bindValueToProperty("estudianteElegido");
+		selectorEstudiante.bindValueToProperty("alumnoSeleccionado");
 
 		Binding<Estudiante, Selector<Estudiante>, ListBuilder<Estudiante>> binding =
 				selectorEstudiante.bindItems(new ObservableProperty<>(this.getModelObject(), "estudiantes"));
@@ -62,11 +63,11 @@ public class MenuWindow extends SimpleWindow<MenuViewModel> {
 
 	}
 	
-	private void VerNota() {
+	/*private void VerNota() {
 		Dialog<?> dialog = new VerNotaAlumnoWindow(this);
 		dialog.open();
 
-	}
+	}*/
 
 	
 }

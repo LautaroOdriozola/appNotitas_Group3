@@ -8,8 +8,7 @@ import repositories.RepoEstudiantes;
 import java.util.List;
 
 @Observable
-public class MenuViewModel {
-	
+public class MenuViewModel {	
 
 	private Estudiante alumnoSeleccionado;
 	private List<Estudiante> estudiantes;
