@@ -30,7 +30,7 @@ public class ModificarDatosAlumnoWindow extends Dialog<ModificarDatosAlumnoViewM
 		.bindValueToProperty("nombre"); 
 
 		new Label(form).setText("Legajo:");
-		new TextBox(form) 
+		new NumericField(form) 
                 .setWidth(150)
 				.bindValueToProperty("legajo");
 		
@@ -48,7 +48,7 @@ public class ModificarDatosAlumnoWindow extends Dialog<ModificarDatosAlumnoViewM
 
 	@Override
 	protected void executeTask() {
-		System.out.println("Me aceptaron, yuppiiii!!!");
+		System.out.println("Agregaron o modificaron un ESTUDIANTE!");
 		this.getModelObject().procesarCambios(); 
 		super.executeTask();
 	}

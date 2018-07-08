@@ -9,11 +9,11 @@ import org.uqbar.commons.utils.Observable;
 @Observable
 public class Estudiante{
 	String nombre;
-	String legajo;
+	int legajo;
 	List<Asignacion> asignaciones;
 	String usuarioGithub;
 	
-	public Estudiante(String _n, String _l, String _u){
+	public Estudiante(String _n, int _l, String _u){
 		nombre = _n;
 		legajo = _l;
 		usuarioGithub = _u;
@@ -39,7 +39,7 @@ public class Estudiante{
 		usuarioGithub = _ug;
 	}
 	
-	public void setLegajo(String _l) {
+	public void setLegajo(int _l) {
 		legajo = _l;
 	}
 	
@@ -47,7 +47,7 @@ public class Estudiante{
 		asignaciones = _asig;
 	}
 	
-	public String getLegajo() {
+	public int getLegajo() {
 		return legajo;
 	}
 	

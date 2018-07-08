@@ -11,7 +11,7 @@ public class ModificarDatosAlumnoViewModel{
 
 	private Estudiante alumnoSeleccionado;
 	String nombre;
-	String legajo;
+	int legajo;
 	String usuarioGithub;
 
 	public ModificarDatosAlumnoViewModel() {
@@ -34,11 +34,11 @@ public class ModificarDatosAlumnoViewModel{
 		usuarioGithub = _ug;
 	}
 	
-	public void setLegajo(String _l) {
+	public void setLegajo(int _l) {
 		legajo = _l;
 	}
 	
-	public String getLegajo() {
+	public int getLegajo() {
 		return legajo;
 	}
 	
