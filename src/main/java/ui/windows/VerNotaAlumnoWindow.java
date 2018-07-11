@@ -2,7 +2,6 @@ package ui.windows;
 
 import org.uqbar.arena.bindings.ObservableProperty;
 
-
 import org.uqbar.arena.bindings.PropertyAdapter;
 import org.uqbar.arena.layout.ColumnLayout;
 import org.uqbar.arena.widgets.*;
@@ -25,27 +24,29 @@ public class VerNotaAlumnoWindow extends Dialog<VerNotaAlumnoViewModel> {
 	@Override
 	protected void createFormPanel(Panel mainPanel) {
 		Panel form = new Panel(mainPanel);
+		form.setLayout(new ColumnLayout(2));
 		
-		Table tablaAsignaciones = new Table<>(form, Asignacion.class);
-		tablaAsignaciones.bindItemsToProperty("asignaciones");
+		new Label(form).setText("Estudiante:");
+		Selector<Estudiante> selectorEstudiante = new Selector<Estudiante>(form).allowNull(true);
+		selectorEstudiante.bindValueToProperty("estudianteSeleccionado");
 
-		Column<Asignacion> columnaAsignacion = new Column<Asignacion>(tablaAsignaciones);
-		columnaAsignacion.setTitle("Asignacion");
-		columnaAsignacion.bindContentsToProperty("nombre"); 
+		Binding<Estudiante, Selector<Estudiante>, ListBuilder<Estudiante>> binding =
+				selectorEstudiante.bindItems(new ObservableProperty<>(this.getModelObject(), "estudiantes"));
 
-		Column<Asignacion> columnaNota = new Column<Asignacion>(tablaAsignaciones);
-		columnaNota.setTitle("Nota");
-		columnaNota.bindContentsToProperty("ultimaNota"); 
+		binding.setAdapter(new PropertyAdapter(Estudiante.class, "nombre"));
 		
-		Column<Asignacion> columnaAprobo = new Column<Asignacion>(tablaAsignaciones);
-		columnaAprobo.setTitle("Aprobo");
-		columnaAprobo.bindContentsToProperty("estaAprobada"); 
-
 	}
 
 	@Override
 	protected void addActions(Panel actions) {
 		new Button(actions).setCaption("Volver").onClick(this::cancel);
+	}
+	
+	@Override
+	protected void executeTask() {
+		System.out.println("UN ESTUDIANTE QUIERE SABER SUS NOTAS!");
+		this.getModelObject().procesarNotas(); 
+		super.executeTask();
 	}
 
 

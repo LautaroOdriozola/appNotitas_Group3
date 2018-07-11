@@ -31,9 +31,9 @@ public class MenuWindow extends SimpleWindow<MenuViewModel> {
 
 	@Override
 	protected void addActions(Panel panelActions) {
-	/*	new Button(panelActions)
-		.setCaption("Ver ultima nota")
-		.onClick(this::verNota);*/
+		new Button(panelActions)
+		.setCaption("Ver ultima nota de un alumno")
+		.onClick(this::verNota);
 		
 		new Button(panelActions)
 		.setCaption("Agregar estudiante o modificar datos")
@@ -57,16 +57,7 @@ public class MenuWindow extends SimpleWindow<MenuViewModel> {
 		Column<Estudiante> columnaUsuario = new Column<Estudiante>(tablaEstudiantes);
 		columnaUsuario.setTitle("Usuario Github");
 		columnaUsuario.bindContentsToProperty("usuarioGithub");
-		
-		new Label(formPanel).setText("Estudiante:");
-		Selector<Estudiante> selectorEstudiante = new Selector<Estudiante>(formPanel).allowNull(true);
-		selectorEstudiante.bindValueToProperty("alumnoSeleccionado");
 
-		Binding<Estudiante, Selector<Estudiante>, ListBuilder<Estudiante>> binding =
-				selectorEstudiante.bindItems(new ObservableProperty<>(this.getModelObject(), "estudiantes"));
-
-		binding.setAdapter(new PropertyAdapter(Estudiante.class, "nombre"));
-		
 		formPanel.setWidth(1200);
 		tablaEstudiantes.setHeight(300);
 		tablaEstudiantes.setWidth(600);
@@ -83,11 +74,16 @@ public class MenuWindow extends SimpleWindow<MenuViewModel> {
 
 	}
 	
-	/*private void VerNota() {
+	private void verNota() {
 		Dialog<?> dialog = new VerNotaAlumnoWindow(this);
+		dialog.onAccept(() -> 
+		this.getModelObject().setEstudiantes(
+				RepoEstudiantes.getInstance().all()
+		)
+		);
 		dialog.open();
 
-	}*/
+	}
 
 	
 }
