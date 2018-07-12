@@ -19,7 +19,7 @@ public class Estudiante{
 		usuarioGithub = _u;
 	}
 	
-	public int devolverUltimaNota(Asignacion asig) {
+	public String devolverUltimaNota(Asignacion asig) {
 		return asig.getUltimaNota();
 	}
 	
@@ -61,6 +61,10 @@ public class Estudiante{
 	
 	public List<Asignacion> getAsignaciones() {
 		return asignaciones;
+	}
+	
+	public void agregarAsignacion(Asignacion _as) {
+		asignaciones.add(_as);
 	}
 	
 

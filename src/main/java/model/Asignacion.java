@@ -6,16 +6,21 @@ import org.uqbar.commons.utils.Observable;
 
 @Observable
 public class Asignacion{
-	List<Integer> notas;
+	List<String> notas;
 	String nombre;
 	boolean califNumerica;
 	
+	public Asignacion(String _nombre, boolean _califNum, List<String> _notas) {
+		nombre = _nombre;
+		califNumerica = _califNum;
+		notas = _notas;
+	}
 	
-	public int getUltimaNota() {
+	public String getUltimaNota() {
 		return notas.get(0);
 	}
 	
-	public void agregarNota(int n) {
+	public void agregarNota(String n) {
 		notas.add(n);
 		//add agrega al final
 	}
@@ -26,10 +31,9 @@ public class Asignacion{
 	
 	public boolean getEstaAprobada() {
 		if(califNumerica) {
-			return this.getUltimaNota() >= 6;
+			return Integer.valueOf(this.getUltimaNota()) >= 6;
 		}else {
-			return this.getUltimaNota() == 'B';
-			//TODO: faltarian mas casos
+			return this.getUltimaNota().startsWith("M");
 		}
 
 	}
