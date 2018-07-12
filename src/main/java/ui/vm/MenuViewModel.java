@@ -1,7 +1,6 @@
 package ui.vm;
 
 import org.uqbar.commons.utils.Observable;
-
 import model.*;
 import repositories.RepoEstudiantes;
 
@@ -24,6 +23,10 @@ public class MenuViewModel {
 	public void setAlumnoSeleccionado(Estudiante _a) {
 		 alumnoSeleccionado = _a;
 		 RepoEstudiantes.getInstance().setEstudianteSeleccionado(alumnoSeleccionado);
+	}
+	
+	public List<Asignacion> getNotasAlumnoSeleccionado() {
+		return alumnoSeleccionado.getAsignaciones();
 	}
 	
 	public void setEstudiantes(List<Estudiante> est) {

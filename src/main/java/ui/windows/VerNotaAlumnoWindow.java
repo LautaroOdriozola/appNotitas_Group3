@@ -14,6 +14,7 @@ import org.uqbar.lacar.ui.model.ListBuilder;
 import org.uqbar.lacar.ui.model.bindings.Binding;
 import ui.vm.*;
 import model.*;
+import repositories.RepoEstudiantes;
 
 public class VerNotaAlumnoWindow extends Dialog<VerNotaAlumnoViewModel> {
 
@@ -26,28 +27,26 @@ public class VerNotaAlumnoWindow extends Dialog<VerNotaAlumnoViewModel> {
 		Panel form = new Panel(mainPanel);
 		form.setLayout(new ColumnLayout(2));
 		
-		new Label(form).setText("Estudiante:");
-		Selector<Estudiante> selectorEstudiante = new Selector<Estudiante>(form).allowNull(true);
-		selectorEstudiante.bindValueToProperty("estudianteSeleccionado");
-
-		Binding<Estudiante, Selector<Estudiante>, ListBuilder<Estudiante>> binding =
-				selectorEstudiante.bindItems(new ObservableProperty<>(this.getModelObject(), "estudiantes"));
-
-		binding.setAdapter(new PropertyAdapter(Estudiante.class, "nombre"));
-		
+		new Label(form).setText("Nombre alumno:");
+		new TextBox(form) 
+        .setWidth(150)
+		.bindValueToProperty("nombre"); 
 	}
 
 	@Override
 	protected void addActions(Panel actions) {
+		new Button(actions).setCaption("Aceptar").onClick(this::mostrarNotas);
 		new Button(actions).setCaption("Volver").onClick(this::cancel);
 	}
 	
-	@Override
-	protected void executeTask() {
-		System.out.println("UN ESTUDIANTE QUIERE SABER SUS NOTAS!");
-		this.getModelObject().procesarNotas(); 
-		super.executeTask();
+	private void mostrarNotas() {
+		Dialog<?> dialog = new mostrarNotaWindow(this);
+		dialog.onAccept(() -> 
+		this.getModelObject().setEstudiantes(
+				RepoEstudiantes.getInstance().all()
+		)
+		);
+		dialog.open();
 	}
-
 
 }

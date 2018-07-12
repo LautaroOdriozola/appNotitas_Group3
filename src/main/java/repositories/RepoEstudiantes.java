@@ -71,6 +71,10 @@ public class RepoEstudiantes {
 		if (instance == null) instance = new RepoEstudiantes();
 		return instance;
 	}
+	
+	public Estudiante devolverEstudiante(String nombre) {
+		return estudiantes.stream().filter(alumno -> alumno.getNombre() == nombre).findFirst().get();
+	}
 
 
 	public List<Estudiante> all() {

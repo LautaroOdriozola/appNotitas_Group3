@@ -1,6 +1,8 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
+
 import model.Asignacion;
 
 import org.uqbar.commons.utils.Observable;
@@ -19,13 +21,17 @@ public class Estudiante{
 		usuarioGithub = _u;
 	}
 	
+	public void crearListaAsignaciones() {
+		asignaciones = new ArrayList<Asignacion>();
+	}
+	
 	public String devolverUltimaNota(Asignacion asig) {
 		return asig.getUltimaNota();
 	}
 	
-	/*public int obtenerUltimaNota(Asignacion a) {
-		return asignaciones.stream().filter(asig -> (asig.getNombre() == a.getNombre())). getUltimaNota();
-	}*/
+	public String obtenerUltimaNotaDeAsignacion(Asignacion a) {
+		return asignaciones.stream().filter(asig -> (asig.getNombre() == a.getNombre())).findFirst().get().getUltimaNota();
+	}
 	
 	public boolean aproboAsignacion(Asignacion a) {
 		return a.getEstaAprobada(); 
