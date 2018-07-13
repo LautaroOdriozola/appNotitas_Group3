@@ -10,9 +10,12 @@ import java.util.List;
 public class PantallaPrincipalViewModel {	
 
 	private Estudiante estudianteActual;
+	private List<Asignacion> asignaciones;
 
 	
 	public PantallaPrincipalViewModel() {
+		//estoy yo hardcodeada (yo = nay)
+		estudianteActual = RepoEstudiantes.getInstance().getEstudianteSeleccionado();	
 	}
 
 	public Estudiante getEstudianteActual() {
@@ -23,8 +26,12 @@ public class PantallaPrincipalViewModel {
 		estudianteActual = _a;
 	}
 	
-	public List<Asignacion> getNotasAlumnoSeleccionado() {
+	public List<Asignacion> getAsignaciones() {
 		return estudianteActual.getAsignaciones();
+	}
+	
+	public void setAsignaciones(List<Asignacion> _asigns) {
+		this.asignaciones = _asigns;
 	}
 	
 

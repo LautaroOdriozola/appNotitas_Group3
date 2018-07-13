@@ -28,7 +28,7 @@ public class PantallaPrincipalWindow extends Dialog<PantallaPrincipalViewModel> 
 		this.setTitle("Bienvenido al sistema de gestion de notas");
 		
 		Table tablaAsignaciones = new Table<>(form, Asignacion.class);
-		tablaAsignaciones.bindItemsToProperty("estudianteActual");
+		tablaAsignaciones.bindItemsToProperty("asignaciones");
 		
 		Column<Asignacion> columnaNombre = new Column<Asignacion>(tablaAsignaciones);
 		columnaNombre.setTitle("Nombre de asignacion");
@@ -36,7 +36,7 @@ public class PantallaPrincipalWindow extends Dialog<PantallaPrincipalViewModel> 
 
 		Column<Asignacion> columnaLegajo = new Column<Asignacion>(tablaAsignaciones);
 		columnaLegajo.setTitle("Ultima nota");
-		columnaLegajo.bindContentsToProperty("nota");
+		columnaLegajo.bindContentsToProperty("ultimaNota");
 		
 		Column<Asignacion> columnaAprobo = new Column<Asignacion>(tablaAsignaciones);
 		columnaAprobo.setTitle("Estado");

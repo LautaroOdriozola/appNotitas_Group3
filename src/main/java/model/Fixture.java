@@ -45,6 +45,8 @@ public class Fixture {
 		RepoEstudiantes.getInstance().nuevoEstudiante(naylaWinter);
 		RepoEstudiantes.getInstance().nuevoEstudiante(lautaroOdriozola);
 		
+		RepoEstudiantes.getInstance().setEstudianteSeleccionado(naylaWinter);
+		
 		
 	}
 
