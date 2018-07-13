@@ -14,7 +14,7 @@ public class PantallaPrincipalViewModel {
 
 	
 	public PantallaPrincipalViewModel() {
-		//estoy yo hardcodeada (yo = nay)
+		//esta hardcodeado desde el fixture, estoy seteada yo (nay)
 		estudianteActual = RepoEstudiantes.getInstance().getEstudianteSeleccionado();	
 	}
 
