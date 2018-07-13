@@ -40,7 +40,7 @@ public class VerNotaAlumnoWindow extends Dialog<VerNotaAlumnoViewModel> {
 	}
 	
 	private void mostrarNotas() {
-		Dialog<?> dialog = new mostrarNotaWindow(this);
+		Dialog<?> dialog = new mostrarNotaWindow(this, new mostrarNotaViewModel(this.getModelObject().getNombre()));
 		dialog.onAccept(() -> 
 		this.getModelObject().setEstudiantes(
 				RepoEstudiantes.getInstance().all()

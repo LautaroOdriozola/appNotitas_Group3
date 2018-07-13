@@ -9,13 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Observable
 public class mostrarNotaViewModel {
 	private Estudiante estudianteSeleccionado;
 	private String nombre;
 	private String nota;
-
-	public mostrarNotaViewModel() {
-		
+	
+	public mostrarNotaViewModel(String _nombre) {
+		nombre = _nombre;
 	}
 	
 	public void setEstudianteSeleccionado(Estudiante _e) {

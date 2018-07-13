@@ -18,8 +18,8 @@ import repositories.RepoEstudiantes;
 
 public class mostrarNotaWindow extends Dialog<mostrarNotaViewModel> {
 	
-	public mostrarNotaWindow(WindowOwner owner) {
-		super(owner, new mostrarNotaViewModel());
+	public mostrarNotaWindow(WindowOwner owner, mostrarNotaViewModel model) {
+		super(owner, model);
 	}
 	
 	@Override
