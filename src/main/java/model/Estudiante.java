@@ -15,10 +15,10 @@ public class Estudiante{
 	List<Asignacion> asignaciones;
 	String usuarioGithub;
 	
-	public Estudiante(String _n, int _l, String _u){
+	public Estudiante(String _n, int _l, String _u){		
 		nombre = _n;
 		legajo = _l;
-		usuarioGithub = _u;
+		usuarioGithub = _u;		
 	}
 	
 	public void crearListaAsignaciones() {
@@ -30,12 +30,16 @@ public class Estudiante{
 	}
 	
 	public String obtenerUltimaNotaDeAsignacion(Asignacion a) {
-		return asignaciones.stream().filter(asig -> (asig.getNombre() == a.getNombre())).findFirst().get().getUltimaNota();
+		return asignaciones.stream().
+				filter(asig -> (asig.getNombre() == a.getNombre())).
+				findFirst().
+				get().
+				getUltimaNota();
 	}
 	
-	public boolean aproboAsignacion(Asignacion a) {
+	/*public boolean aproboAsignacion(Asignacion a) {
 		return a.getEstaAprobada(); 
-	}
+	}*/
 	
 	public void setNombre(String _n) {
 		nombre = _n;

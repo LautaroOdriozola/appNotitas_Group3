@@ -1,9 +1,10 @@
 package gestion;
 import org.uqbar.arena.Application;
+
 import org.uqbar.arena.windows.Window;
 
 import model.Fixture;
-import ui.windows.MenuWindow;
+import ui.windows.*;
 
 public class GestionNotasApplication extends Application{
 
@@ -14,6 +15,6 @@ public class GestionNotasApplication extends Application{
 	
 	@Override
 	protected Window<?> createMainWindow() {
-		return new MenuWindow(this);
+		return new PantallaPrincipalWindow(this);
 	}
 }

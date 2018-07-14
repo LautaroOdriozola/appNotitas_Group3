@@ -32,18 +32,21 @@ public class PantallaPrincipalWindow extends Dialog<PantallaPrincipalViewModel> 
 		
 		Column<Asignacion> columnaNombre = new Column<Asignacion>(tablaAsignaciones);
 		columnaNombre.setTitle("Nombre de asignacion");
+		columnaNombre.setFixedSize(250);
 		columnaNombre.bindContentsToProperty("nombre");
 
 		Column<Asignacion> columnaLegajo = new Column<Asignacion>(tablaAsignaciones);
 		columnaLegajo.setTitle("Ultima nota");
+		columnaLegajo.setFixedSize(150);
 		columnaLegajo.bindContentsToProperty("ultimaNota");
 		
 		Column<Asignacion> columnaAprobo = new Column<Asignacion>(tablaAsignaciones);
 		columnaAprobo.setTitle("Estado");
+		columnaAprobo.setFixedSize(100);
 		columnaAprobo.bindContentsToProperty("estado");
 		
 
-		form.setWidth(1200);
+		form.setWidth(2000);
 		tablaAsignaciones.setHeight(300);
 		tablaAsignaciones.setWidth(600);
 	}

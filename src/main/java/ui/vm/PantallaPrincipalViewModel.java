@@ -13,13 +13,18 @@ public class PantallaPrincipalViewModel {
 	private List<Asignacion> asignaciones;
 
 	
-	public PantallaPrincipalViewModel() {
+	public PantallaPrincipalViewModel() {		
 		//esta hardcodeado desde el fixture, estoy seteada yo (nay)
+		
 		estudianteActual = RepoEstudiantes.getInstance().getEstudianteSeleccionado();	
 	}
 
 	public Estudiante getEstudianteActual() {
 		return estudianteActual;
+	}
+	
+	public String getNombreEstudianteActual() {
+		return estudianteActual.getNombre();
 	}
 	
 	public void setEstudianteActual(Estudiante _a) {

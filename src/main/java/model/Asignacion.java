@@ -8,6 +8,9 @@ import org.uqbar.commons.utils.Observable;
 @Observable
 public class Asignacion{
 	String nombre;
+	String ultimaNota;
+	String estado;
+	
 	boolean califNumerica;
 	List<String> notas;// = new ArrayList<String>();
 	
@@ -16,8 +19,16 @@ public class Asignacion{
 		califNumerica = _califNum;
 	}
 	
+	public void setUltimaNota(String nota) {
+		this.ultimaNota = nota;
+	}
+	
+	public String getUltimaCalificacion() {
+		return notas.get(notas.size()-1);
+	}
+	
 	public String getUltimaNota() {
-		return notas.get(notas.size());
+		return this.getUltimaCalificacion();
 	}
 	
 	public void crearLista() {
@@ -33,13 +44,17 @@ public class Asignacion{
 		return nombre;
 	}
 	
-	public String getEstado() {
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+	
+	public String revisarEstado() {
 		boolean aprobado;
 		if(califNumerica) {
 			aprobado = Integer.valueOf(this.getUltimaNota()) >= 6;
 			
 		}else {
-			aprobado = this.getUltimaNota().startsWith("M");
+			aprobado = this.getUltimaNota().startsWith("B");
 		}
 		
 		if(aprobado) {
@@ -47,7 +62,10 @@ public class Asignacion{
 		}else {
 			return "Reprobado";
 		}
-
+	}
+	
+	public String getEstado() {
+		return this.revisarEstado();
 	}
 	
 }
