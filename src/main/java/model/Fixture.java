@@ -12,12 +12,12 @@ public class Fixture {
 		
 		Estudiante naylaWinter = new Estudiante("Nayla Winter", 1591915, "naylawinter");
 		Estudiante lautaroOdriozola = new Estudiante("Lautaro Odriozola", 1566076, "lautaroOdriozola");
-				
+					
 		
 		Asignacion tpArena = new Asignacion("TP ARENA", false);
 		tpArena.crearLista();
 		tpArena.agregarNota("B");
-		tpArena.agregarNota("B+");
+		tpArena.agregarNota("R");
 		Asignacion operativos = new Asignacion("Sistemas operativos", true);
 		operativos.crearLista();
 		operativos.agregarNota("8");
@@ -44,6 +44,8 @@ public class Fixture {
 		
 		RepoEstudiantes.getInstance().nuevoEstudiante(naylaWinter);
 		RepoEstudiantes.getInstance().nuevoEstudiante(lautaroOdriozola);
+		
+		RepoEstudiantes.getInstance().setEstudianteSeleccionado(naylaWinter);
 		
 		
 	}

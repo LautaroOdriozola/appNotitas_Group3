@@ -9,21 +9,25 @@ import org.uqbar.commons.utils.Observable;
 @Observable
 public class ModificarDatosAlumnoViewModel{
 
-	private Estudiante alumnoSeleccionado;
+	private Estudiante estudianteActual;
 	String nombre;
 	int legajo;
 	String usuarioGithub;
 
-	public ModificarDatosAlumnoViewModel() {
-		alumnoSeleccionado = RepoEstudiantes.getInstance().getEstudianteSeleccionado();
+	public ModificarDatosAlumnoViewModel(Estudiante _est) {
+		this.estudianteActual = _est;
+		this.nombre = _est.getNombre();
+		this.legajo = _est.getLegajo();
+		this.usuarioGithub = _est.getusuarioGithub();
+		
 	}
 
-	public Estudiante getAlumnoSeleccionado() {
-		return alumnoSeleccionado;
+	public Estudiante estudianteActual() {
+		return estudianteActual;
 	}
 	
-	public void setAlumnoSeleccionado(Estudiante _a) {
-		 alumnoSeleccionado = _a;
+	public void estudianteActual(Estudiante _a) {
+		estudianteActual = _a;
 	}
 
 	public void setNombre(String _n) {
@@ -51,9 +55,12 @@ public class ModificarDatosAlumnoViewModel{
 	}
 	
 	public void procesarCambios() {
-		// Creo estudiante y lo agrego al repo. Hay que chequear si ya estaba asi no se agregan varios
-		Estudiante estudiante = new Estudiante(nombre,legajo,usuarioGithub);
-		RepoEstudiantes .getInstance().nuevoEstudiante(estudiante);
+		estudianteActual.setLegajo(this.legajo);
+		estudianteActual.setusuarioGithub(this.usuarioGithub);
+		estudianteActual.setNombre(this.nombre);
+		
+		//supongo que si ya le cambio los datos al estudiante no tengo 
+		//que actualizar ningun repo ni nada
 	}
 
 

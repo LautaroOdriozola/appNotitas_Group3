@@ -12,11 +12,12 @@ import org.uqbar.arena.windows.WindowOwner;
 import org.uqbar.lacar.ui.model.ListBuilder;
 import org.uqbar.lacar.ui.model.bindings.Binding;
 import ui.vm.*;
+import model.*;
 
 public class ModificarDatosAlumnoWindow extends Dialog<ModificarDatosAlumnoViewModel> {
 
-	public ModificarDatosAlumnoWindow(WindowOwner owner) {
-		super(owner, new ModificarDatosAlumnoViewModel());
+	public ModificarDatosAlumnoWindow(WindowOwner owner, Estudiante estudiante) {
+		super(owner, new ModificarDatosAlumnoViewModel(estudiante));
 	}
 
 	@Override
@@ -48,7 +49,7 @@ public class ModificarDatosAlumnoWindow extends Dialog<ModificarDatosAlumnoViewM
 
 	@Override
 	protected void executeTask() {
-		System.out.println("Agregaron o modificaron un ESTUDIANTE!");
+		System.out.println("Se modificaron los datos de un estudiante");
 		this.getModelObject().procesarCambios(); 
 		super.executeTask();
 	}
