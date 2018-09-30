@@ -53,13 +53,13 @@ public class ModificarDatosAlumnoViewModel{
 	
 	public void procesarCambios() {
 		
-		//TODO: llamar al service request con el metodo de PUT
-		estudianteActual.setLegajo(this.legajo);
-		estudianteActual.setusuarioGithub(this.usuarioGithub);
-		estudianteActual.setNombre(this.nombre);
+		Estudiante estudianteNuevo = new Estudiante();
+		estudianteNuevo.setLegajo(this.legajo);
+		estudianteNuevo.setusuarioGithub(this.usuarioGithub);
+		estudianteNuevo.setNombre(this.nombre);
 		
-		//supongo que si ya le cambio los datos al estudiante no tengo 
-		//que actualizar ningun repo ni nada
+		//TODO: llamar al service request con el metodo de PUT
+		//pasandole el header del estudiante actual y pasandole el estudiante nuevo para que lo intercambie
 	}
 
 

@@ -38,8 +38,12 @@ public class LoginWindow extends Dialog<LoginViewModel> {
 	}
 
 	protected void ingresar() {
+		
+		//intento ingresar
 		this.getModelObject().ingresar();
 
+		
+		//chequeo si pude entrar correctamente
 		if (this.getModelObject().logueoCorrecto()) {
 			Dialog<?> dialog = new PantallaPrincipalWindow(this, this.getModelObject().getToken());
 			dialog.open();

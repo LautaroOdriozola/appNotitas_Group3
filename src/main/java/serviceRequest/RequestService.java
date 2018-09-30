@@ -5,15 +5,16 @@ import com.sun.jersey.api.client.WebResource;
 
 import javax.ws.rs.core.MediaType;
 
-/* Pecursos a utilizar
-*  http://notitas.herokuapp.com/student (PUT)
-*  http://notitas.herokuapp.com/student
-*  http://notitas.herokuapp.com/student/assignments
+/* Recursos a utilizar
+*  http://notitas.herokuapp.com/PUT/student 
+*  http://notitas.herokuapp.com/GET/student
+*  http://notitas.herokuapp.com/GET/student/assignments
 * */
 
 public class RequestService {
     private Client client;
-    private static final String API_NOTITAS = "hhttp://notitas.herokuapp.com/";
+    private static final String API_NOTITAS_GET = "hhttp://notitas.herokuapp.com/GET";
+    private static final String API_NOTITAS_PUT = "hhttp://notitas.herokuapp.com/PUT";
     private static final String RESOURCE_STUDENT = "student";
     private static final String RESOURCE_ASSIGMENTS = "student/assignments";
 
@@ -23,7 +24,7 @@ public class RequestService {
     }
 
     public String getDatosAlumno(){
-        ClientResponse responseDatosAlumno = this.client.resource(API_NOTITAS).path(RESOURCE_STUDENT)
+        ClientResponse responseDatosAlumno = this.client.resource(API_NOTITAS_GET).path(RESOURCE_STUDENT)
                 .accept(MediaType.APPLICATION_JSON)
                 .get(ClientResponse.class);
         
@@ -32,7 +33,7 @@ public class RequestService {
     }
     
     public String getDatosAsignaciones(){
-        ClientResponse responseDatosAsignaciones = this.client.resource(API_NOTITAS).path(RESOURCE_ASSIGMENTS)
+        ClientResponse responseDatosAsignaciones = this.client.resource(API_NOTITAS_GET).path(RESOURCE_ASSIGMENTS)
                 .accept(MediaType.APPLICATION_JSON)
                 .get(ClientResponse.class);
         
