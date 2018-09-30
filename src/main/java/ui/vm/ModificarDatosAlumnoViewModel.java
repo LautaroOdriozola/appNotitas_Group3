@@ -14,12 +14,9 @@ public class ModificarDatosAlumnoViewModel{
 	int legajo;
 	String usuarioGithub;
 
-	public ModificarDatosAlumnoViewModel(Estudiante _est) {
-		this.estudianteActual = _est;
-		this.nombre = _est.getNombre();
-		this.legajo = _est.getLegajo();
-		this.usuarioGithub = _est.getusuarioGithub();
-		
+	public ModificarDatosAlumnoViewModel(String token) {
+		//TODO: hacerle get al service request con el token que me mandan,
+		//setearle los parametros al estudiante actual
 	}
 
 	public Estudiante estudianteActual() {
@@ -55,6 +52,8 @@ public class ModificarDatosAlumnoViewModel{
 	}
 	
 	public void procesarCambios() {
+		
+		//TODO: llamar al service request con el metodo de PUT
 		estudianteActual.setLegajo(this.legajo);
 		estudianteActual.setusuarioGithub(this.usuarioGithub);
 		estudianteActual.setNombre(this.nombre);

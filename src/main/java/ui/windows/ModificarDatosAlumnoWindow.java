@@ -16,8 +16,8 @@ import model.*;
 
 public class ModificarDatosAlumnoWindow extends Dialog<ModificarDatosAlumnoViewModel> {
 
-	public ModificarDatosAlumnoWindow(WindowOwner owner, Estudiante estudiante) {
-		super(owner, new ModificarDatosAlumnoViewModel(estudiante));
+	public ModificarDatosAlumnoWindow(WindowOwner owner, String token) {
+		super(owner, new ModificarDatosAlumnoViewModel(token));
 	}
 
 	@Override

@@ -17,19 +17,19 @@ import model.*;
 import repositories.RepoEstudiantes;
 
 public class PantallaPrincipalWindow extends Dialog<PantallaPrincipalViewModel> {
-	
-	public PantallaPrincipalWindow(WindowOwner owner) {
-		super(owner, new PantallaPrincipalViewModel());
+
+	public PantallaPrincipalWindow(WindowOwner owner, String token) {
+		super(owner, new PantallaPrincipalViewModel(token));
 	}
-	
+
 	@Override
 	protected void createFormPanel(Panel mainPanel) {
 		Panel form = new Panel(mainPanel);
 		this.setTitle("Bienvenido al sistema de gestion de notas");
-		
+
 		Table tablaAsignaciones = new Table<>(form, Asignacion.class);
 		tablaAsignaciones.bindItemsToProperty("asignaciones");
-		
+
 		Column<Asignacion> columnaNombre = new Column<Asignacion>(tablaAsignaciones);
 		columnaNombre.setTitle("Nombre de asignacion");
 		columnaNombre.setFixedSize(250);
@@ -39,28 +39,25 @@ public class PantallaPrincipalWindow extends Dialog<PantallaPrincipalViewModel> 
 		columnaLegajo.setTitle("Ultima nota");
 		columnaLegajo.setFixedSize(150);
 		columnaLegajo.bindContentsToProperty("ultimaNota");
-		
+
 		Column<Asignacion> columnaAprobo = new Column<Asignacion>(tablaAsignaciones);
 		columnaAprobo.setTitle("Estado");
 		columnaAprobo.setFixedSize(100);
 		columnaAprobo.bindContentsToProperty("estado");
-		
 
 		form.setWidth(2000);
 		tablaAsignaciones.setHeight(300);
 		tablaAsignaciones.setWidth(600);
 	}
-	
+
 	@Override
 	protected void addActions(Panel panelActions) {
-		
-		new Button(panelActions)
-		.setCaption("Modificar datos personales")
-		.onClick(this::modificarDatos);
+
+		new Button(panelActions).setCaption("Modificar datos personales").onClick(this::modificarDatos);
 	}
 
 	private void modificarDatos() {
-		Dialog<?> dialog = new ModificarDatosAlumnoWindow(this, this.getModelObject().getEstudianteActual());
+		Dialog<?> dialog = new ModificarDatosAlumnoWindow(this, this.getModelObject().getToken());
 		dialog.open();
 
 	}
