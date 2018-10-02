@@ -1,8 +1,11 @@
 package ui.vm;
 
 import org.uqbar.commons.utils.Observable;
+
+import json.JSONConverter;
 import model.*;
 import repositories.RepoEstudiantes;
+import serviceRequest.RequestService;
 
 import java.util.List;
 
@@ -21,7 +24,6 @@ public class PantallaPrincipalViewModel {
 		
 		
 		this.token = token;
-		//TODO: llamar al metodo get de service request con el token del estudiante actual
 	}
 
 	public Estudiante getEstudianteActual() {
@@ -38,8 +40,15 @@ public class PantallaPrincipalViewModel {
 	
 	public List<Asignacion> getAsignaciones() {
 		
-		//TODO: llamar al service request con el metodo get de asignaciones con el token del estudiante actual
-		return estudianteActual.getAsignaciones();
+		JSONConverter convertidor = new JSONConverter();
+		String alumnoEnJSON = convertidor.convertirEstudiateAJSON(estudianteActual);
+		
+		RequestService reqser = new RequestService();
+		String asignacionesJSON = reqser.getDatosAsignaciones(alumnoEnJson, this.token);
+		
+		//TODO: this.asignaciones = convertidor.desconvertirNotas(asignacionesJSON);
+		
+		// return this.asignaciones;
 	}
 	
 	public void setAsignaciones(List<Asignacion> _asigns) {

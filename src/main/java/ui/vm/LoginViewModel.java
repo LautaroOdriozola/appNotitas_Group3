@@ -34,7 +34,8 @@ public class LoginViewModel {
 	}
 	
 	public void ingresar() {
-		//TODO: se obtiene el token del estudiante seleccionado
+		//hardcodeado con el token que esta en el tp. 
+		this.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIxMTEyMjIzMzMiLCJybmQiOiJ5SXNmZFIwN2lIR3BRRmVjYU9KT2VRPT0ifQ.9pVJGUXhrJPQ-TptNCt971l0h_1dWqWgMrHAWXJchho";
 	}
 	
 	public boolean logueoCorrecto() {

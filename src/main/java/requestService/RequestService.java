@@ -1,4 +1,4 @@
-package serviceRequest;
+package src.main.java.requestService;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
@@ -33,11 +33,11 @@ public class RequestService {
         
     }
     
-    public String getDatosAsignaciones(){
-        ClientResponse responseDatosAsignaciones = this.client.resource(API_NOTITAS_GET).path(RESOURCE_ASSIGMENTS)
-        		.header("Authorization", /TOKEN/)
+    public String getDatosAsignaciones(String body, String token){
+        ClientResponse responseDatosAsignaciones = this.client.resource(API_NOTITAS).path(RESOURCE_ASSIGMENTS)
+        		.header("Authorization", token)
                 .accept("application/json")
-                .get(ClientResponse.class);
+                .get(ClientResponse.class, body);
         
         String datosAsigEnString = responseDatosAsignaciones.getEntity(String.class);
         return datosAsigEnString;

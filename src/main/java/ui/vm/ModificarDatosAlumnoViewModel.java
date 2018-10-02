@@ -4,7 +4,11 @@ import java.util.List;
 
 import model.*;
 import repositories.RepoEstudiantes;
+import src.main.java.requestService.RequestService;
+
 import org.uqbar.commons.utils.Observable;
+
+import json.JSONConverter;
 
 @Observable
 public class ModificarDatosAlumnoViewModel{
@@ -13,10 +17,10 @@ public class ModificarDatosAlumnoViewModel{
 	String nombre;
 	int legajo;
 	String usuarioGithub;
+	String tokenActual;
 
 	public ModificarDatosAlumnoViewModel(String token) {
-		//TODO: hacerle get al service request con el token que me mandan,
-		//setearle los parametros al estudiante actual
+		this.tokenActual = token;	
 	}
 
 	public Estudiante estudianteActual() {
@@ -58,8 +62,11 @@ public class ModificarDatosAlumnoViewModel{
 		estudianteNuevo.setusuarioGithub(this.usuarioGithub);
 		estudianteNuevo.setNombre(this.nombre);
 		
-		//TODO: llamar al service request con el metodo de PUT
-		//pasandole el header del estudiante actual y pasandole el estudiante nuevo para que lo intercambie
+		JSONConverter convertidor = new JSONConverter();
+		String estudianteJSON = convertidor.convertirEstudiateAJSON(estudianteNuevo);
+		
+		RequestService reqser = new RequestService();
+		reqser.putDatosAlumnos(estudianteJSON, this.tokenActual);
 	}
 
 
