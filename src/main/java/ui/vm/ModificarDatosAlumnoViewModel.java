@@ -4,11 +4,10 @@ import java.util.List;
 
 import model.*;
 import repositories.RepoEstudiantes;
-import src.main.java.requestService.RequestService;
+import requestService.RequestService;
 
 import org.uqbar.commons.utils.Observable;
 
-import json.JSONConverter;
 
 @Observable
 public class ModificarDatosAlumnoViewModel{

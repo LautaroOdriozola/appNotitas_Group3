@@ -1,4 +1,4 @@
-package json;
+package model;
 
 import model.Estudiante;
 

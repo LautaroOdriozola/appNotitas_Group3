@@ -10,9 +10,17 @@ public class Fixture {
 
 	public static void initialize() {
 		
-		Estudiante naylaWinter = new Estudiante("Nayla Winter", 1591915, "naylawinter");
-		Estudiante lautaroOdriozola = new Estudiante("Lautaro Odriozola", 1566076, "lautaroOdriozola");
-					
+		Estudiante naylaWinter = new Estudiante();
+		naylaWinter.setNombre("Nayla");
+		naylaWinter.setApellido("Winter");
+		naylaWinter.setLegajo(1591915);
+		naylaWinter.setusuarioGithub("naylawinter");
+		
+		Estudiante lautaroOdriozola = new Estudiante();
+		lautaroOdriozola.setNombre("Lautaro");
+		lautaroOdriozola.setApellido("Odriozola");
+		lautaroOdriozola.setLegajo(1566076);
+		lautaroOdriozola.setusuarioGithub("lautaroOdriozola");
 		
 		Asignacion tpArena = new Asignacion("TP ARENA", false);
 		tpArena.crearLista();

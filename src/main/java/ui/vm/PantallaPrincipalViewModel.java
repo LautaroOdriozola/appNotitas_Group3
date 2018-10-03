@@ -2,10 +2,9 @@ package ui.vm;
 
 import org.uqbar.commons.utils.Observable;
 
-import json.JSONConverter;
 import model.*;
 import repositories.RepoEstudiantes;
-import serviceRequest.RequestService;
+import requestService.RequestService;
 
 import java.util.List;
 
@@ -38,18 +37,19 @@ public class PantallaPrincipalViewModel {
 		estudianteActual = _a;
 	}
 	
-	public List<Asignacion> getAsignaciones() {
+	//TODO: Comento metodo porque todavia no devuelve nada en concreto.
+	/*public List<Asignacion> getAsignaciones() {
 		
 		JSONConverter convertidor = new JSONConverter();
 		String alumnoEnJSON = convertidor.convertirEstudiateAJSON(estudianteActual);
 		
 		RequestService reqser = new RequestService();
-		String asignacionesJSON = reqser.getDatosAsignaciones(alumnoEnJson, this.token);
+		String asignacionesJSON = reqser.getDatosAsignaciones(alumnoEnJSON, this.token);
 		
 		//TODO: this.asignaciones = convertidor.desconvertirNotas(asignacionesJSON);
 		
 		// return this.asignaciones;
-	}
+	}*/
 	
 	public void setAsignaciones(List<Asignacion> _asigns) {
 		this.asignaciones = _asigns;
