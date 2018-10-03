@@ -13,8 +13,8 @@ public class LoginViewModel {
 	private String contrasenia;
 	private String token;
 	
-	public LoginViewModel() {		
-	}
+	//public LoginViewModel() {		
+	//}
 
 	public String getUsuario() {
 		return usuario;

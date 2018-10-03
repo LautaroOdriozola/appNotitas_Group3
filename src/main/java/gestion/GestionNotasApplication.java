@@ -15,6 +15,6 @@ public class GestionNotasApplication extends Application{
 	
 	@Override
 	protected Window<?> createMainWindow() {
-		return new PantallaPrincipalWindow(this);
+		return new LoginWindow(this);
 	}
 }

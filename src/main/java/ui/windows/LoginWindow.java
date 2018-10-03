@@ -10,6 +10,7 @@ import org.uqbar.arena.windows.WindowOwner;
 
 import org.uqbar.lacar.ui.model.ListBuilder;
 import org.uqbar.lacar.ui.model.bindings.Binding;
+import ui.vm.LoginViewModel;
 import ui.vm.*;
 import model.*;
 
@@ -25,19 +26,19 @@ public class LoginWindow extends Dialog<LoginViewModel> {
 		form.setLayout(new ColumnLayout(2));
 
 		new Label(form).setText("Usuario:");
-		new TextBox(form).setWidth(150).bindValueToProperty("nombre");
+		new TextBox(form).setWidth(150).bindValueToProperty("usuario");
 
 		new Label(form).setText("Contraseña:");
-		new TextBox(form).setWidth(150).bindValueToProperty("contrasenia");
+		new PasswordField(form).setWidth(150).bindValueToProperty("contrasenia");
 	}
 
 	@Override
 	protected void addActions(Panel actions) {
-		new Button(actions).setCaption("Ingresar").onClick(this::ingresar).setAsDefault();
+		new Button(actions).setCaption("Ingresar").onClick(this::ingresar);
 		new Button(actions).setCaption("Cancelar").onClick(this::cancel);
 	}
 
-	protected void ingresar() {
+	private void ingresar() {
 		
 		//intento ingresar
 		this.getModelObject().ingresar();
@@ -51,7 +52,6 @@ public class LoginWindow extends Dialog<LoginViewModel> {
 			// TODO: mostrar logueo incorrecto
 		}
 
-		super.executeTask();
 	}
 
 }
