@@ -8,7 +8,6 @@ import model.Fixture;
 import requestService.RequestService;
 import ui.windows.*;
 
-
 public class GestionNotasApplication extends Application{
 
 	public static void main(String[] args) {
