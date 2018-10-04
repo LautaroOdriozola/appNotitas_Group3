@@ -25,10 +25,15 @@ public class ModificarDatosAlumnoWindow extends Dialog<ModificarDatosAlumnoViewM
 		Panel form = new Panel(mainPanel);
 		form.setLayout(new ColumnLayout(2));
 		
-		new Label(form).setText("Nombre alumno:");
+		new Label(form).setText("Nombre de alumno:");
 		new TextBox(form) 
         .setWidth(150)
-		.bindValueToProperty("nombre"); 
+		.bindValueToProperty("nombre");
+		
+		new Label(form).setText("Apellido de alumno:");
+		new TextBox(form) 
+        .setWidth(150)
+		.bindValueToProperty("apellido");
 
 		new Label(form).setText("Legajo:");
 		new NumericField(form) 

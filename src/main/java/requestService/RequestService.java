@@ -49,16 +49,10 @@ public class RequestService {
     public void putDatosAlumnos(String body, String token) {
     	WebResource webResource = client.resource(API_NOTITAS).path(RESOURCE_STUDENT);
     
-    	//Input de ejemplo => donde dice input va el body
-    	String input = "{ \" code\" : \"" + "1566076" + "\"," +
-            " \"first_name\":\"" + "Lautaro" + "\"," + 
-            " \"last_name\":\"" +  "Odriozola" + "\"," +
-            " \"github_user\":\"" + "lautiOdriozola" + "\"}";
-    
     	ClientResponse response = webResource
     			.header("Authorization","Bearer " + token)
     			.type("application/json")
-    			.put(ClientResponse.class,input);
+    			.put(ClientResponse.class,body);
     
     	if (response.getStatus() != 201) {
 			throw new RuntimeException("Failed : HTTP error code : "

@@ -14,6 +14,7 @@ public class ModificarDatosAlumnoViewModel{
 
 	private Estudiante estudianteActual;
 	String nombre;
+	String apellido;
 	int legajo;
 	String usuarioGithub;
 	String tokenActual;
@@ -34,6 +35,10 @@ public class ModificarDatosAlumnoViewModel{
 		nombre = _n;
 	}
 	
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+	
 	public void setusuarioGithub(String _ug) {
 		usuarioGithub = _ug;
 	}
@@ -50,6 +55,10 @@ public class ModificarDatosAlumnoViewModel{
 		return nombre;
 	}
 	
+	public String getApellido() {
+		return apellido;
+	}
+	
 	public String getusuarioGithub() {
 		return usuarioGithub;
 	}
@@ -60,6 +69,7 @@ public class ModificarDatosAlumnoViewModel{
 		estudianteNuevo.setLegajo(this.legajo);
 		estudianteNuevo.setusuarioGithub(this.usuarioGithub);
 		estudianteNuevo.setNombre(this.nombre);
+		estudianteNuevo.setApellido(this.apellido);
 		
 		JSONConverter convertidor = new JSONConverter();
 		String estudianteJSON = convertidor.convertirEstudiateAJSON(estudianteNuevo);
