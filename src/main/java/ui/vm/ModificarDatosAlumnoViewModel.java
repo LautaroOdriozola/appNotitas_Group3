@@ -4,22 +4,23 @@ import java.util.List;
 
 import model.*;
 import repositories.RepoEstudiantes;
+import requestService.RequestService;
+
 import org.uqbar.commons.utils.Observable;
+
 
 @Observable
 public class ModificarDatosAlumnoViewModel{
 
 	private Estudiante estudianteActual;
 	String nombre;
+	String apellido;
 	int legajo;
 	String usuarioGithub;
+	String tokenActual;
 
-	public ModificarDatosAlumnoViewModel(Estudiante _est) {
-		this.estudianteActual = _est;
-		this.nombre = _est.getNombre();
-		this.legajo = _est.getLegajo();
-		this.usuarioGithub = _est.getusuarioGithub();
-		
+	public ModificarDatosAlumnoViewModel(String token) {
+		this.tokenActual = token;
 	}
 
 	public Estudiante estudianteActual() {
@@ -32,6 +33,10 @@ public class ModificarDatosAlumnoViewModel{
 
 	public void setNombre(String _n) {
 		nombre = _n;
+	}
+	
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
 	}
 	
 	public void setusuarioGithub(String _ug) {
@@ -50,17 +55,27 @@ public class ModificarDatosAlumnoViewModel{
 		return nombre;
 	}
 	
+	public String getApellido() {
+		return apellido;
+	}
+	
 	public String getusuarioGithub() {
 		return usuarioGithub;
 	}
 	
 	public void procesarCambios() {
-		estudianteActual.setLegajo(this.legajo);
-		estudianteActual.setusuarioGithub(this.usuarioGithub);
-		estudianteActual.setNombre(this.nombre);
 		
-		//supongo que si ya le cambio los datos al estudiante no tengo 
-		//que actualizar ningun repo ni nada
+		Estudiante estudianteNuevo = new Estudiante();
+		estudianteNuevo.setLegajo(this.legajo);
+		estudianteNuevo.setusuarioGithub(this.usuarioGithub);
+		estudianteNuevo.setNombre(this.nombre);
+		estudianteNuevo.setApellido(this.apellido);
+		
+		JSONConverter convertidor = new JSONConverter();
+		String estudianteJSON = convertidor.convertirEstudiateAJSON(estudianteNuevo);
+		
+		RequestService reqser = new RequestService();
+		reqser.putDatosAlumnos(estudianteJSON, this.tokenActual);
 	}
 
 

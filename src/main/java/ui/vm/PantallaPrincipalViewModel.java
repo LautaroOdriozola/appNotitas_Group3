@@ -1,8 +1,10 @@
 package ui.vm;
 
 import org.uqbar.commons.utils.Observable;
+
 import model.*;
 import repositories.RepoEstudiantes;
+import requestService.RequestService;
 
 import java.util.List;
 
@@ -11,12 +13,21 @@ public class PantallaPrincipalViewModel {
 
 	private Estudiante estudianteActual;
 	private List<Asignacion> asignaciones;
+	private String token;
 
 	
-	public PantallaPrincipalViewModel() {		
+	public PantallaPrincipalViewModel(String tokenNuevo) throws Exception{		
 		//esta hardcodeado desde el fixture, estoy seteada yo (nay)
 		
-		estudianteActual = RepoEstudiantes.getInstance().getEstudianteSeleccionado();	
+		//estudianteActual = RepoEstudiantes.getInstance().getEstudianteSeleccionado();
+		
+		this.token = tokenNuevo;
+		
+		RequestService req = new RequestService();
+		String json = req.getDatosAlumno("", token);
+		
+		this.estudianteActual = ParserJson.getInstance().parsearEstudiante(json);
+		
 	}
 
 	public Estudiante getEstudianteActual() {
@@ -31,7 +42,19 @@ public class PantallaPrincipalViewModel {
 		estudianteActual = _a;
 	}
 	
+	//TODO: Comento metodo porque todavia no devuelve nada en concreto.
 	public List<Asignacion> getAsignaciones() {
+		
+		
+		RequestService reqser = new RequestService();
+		String asignacionesJSON = reqser.getDatosAsignaciones("", this.token);
+		
+		
+		
+		//TODO: this.asignaciones = convertidor.desconvertirNotas(asignacionesJSON);
+		
+		// return this.asignaciones;
+		
 		return estudianteActual.getAsignaciones();
 	}
 	
@@ -39,6 +62,10 @@ public class PantallaPrincipalViewModel {
 		this.asignaciones = _asigns;
 	}
 	
+	
+	public String getToken() {
+		return token;
+	}
 
 
 }

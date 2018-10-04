@@ -11,15 +11,21 @@ import org.uqbar.commons.utils.Observable;
 @Observable
 public class Estudiante{
 	String nombre;
+	String apellido;
 	int legajo;
 	List<Asignacion> asignaciones;
 	String usuarioGithub;
 	
+	public Estudiante(){
+		
+	}
+	
+	/*
 	public Estudiante(String _n, int _l, String _u){		
 		nombre = _n;
 		legajo = _l;
 		usuarioGithub = _u;		
-	}
+	}*/
 	
 	public void crearListaAsignaciones() {
 		asignaciones = new ArrayList<Asignacion>();
@@ -41,16 +47,20 @@ public class Estudiante{
 		return a.getEstaAprobada(); 
 	}*/
 	
-	public void setNombre(String _n) {
-		nombre = _n;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 	
-	public void setusuarioGithub(String _ug) {
-		usuarioGithub = _ug;
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
 	}
 	
-	public void setLegajo(int _l) {
-		legajo = _l;
+	public void setusuarioGithub(String usuarioGitHub) {
+		this.usuarioGithub = usuarioGitHub;
+	}
+	
+	public void setLegajo(int legajo) {
+		this.legajo = legajo;
 	}
 	
 	public void setAsignaciones(List<Asignacion> _asig){
@@ -63,6 +73,10 @@ public class Estudiante{
 	
 	public String getNombre() {
 		return nombre;
+	}
+	
+	public String getApellido() {
+		return apellido;
 	}
 	
 	public String getusuarioGithub() {

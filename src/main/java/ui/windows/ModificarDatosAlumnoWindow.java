@@ -16,8 +16,8 @@ import model.*;
 
 public class ModificarDatosAlumnoWindow extends Dialog<ModificarDatosAlumnoViewModel> {
 
-	public ModificarDatosAlumnoWindow(WindowOwner owner, Estudiante estudiante) {
-		super(owner, new ModificarDatosAlumnoViewModel(estudiante));
+	public ModificarDatosAlumnoWindow(WindowOwner owner,String token) {
+		super(owner, new ModificarDatosAlumnoViewModel(token));
 	}
 
 	@Override
@@ -25,10 +25,15 @@ public class ModificarDatosAlumnoWindow extends Dialog<ModificarDatosAlumnoViewM
 		Panel form = new Panel(mainPanel);
 		form.setLayout(new ColumnLayout(2));
 		
-		new Label(form).setText("Nombre alumno:");
+		new Label(form).setText("Nombre de alumno:");
 		new TextBox(form) 
         .setWidth(150)
-		.bindValueToProperty("nombre"); 
+		.bindValueToProperty("nombre");
+		
+		new Label(form).setText("Apellido de alumno:");
+		new TextBox(form) 
+        .setWidth(150)
+		.bindValueToProperty("apellido");
 
 		new Label(form).setText("Legajo:");
 		new NumericField(form) 
