@@ -18,7 +18,7 @@ import repositories.RepoEstudiantes;
 
 public class PantallaPrincipalWindow extends Dialog<PantallaPrincipalViewModel> {
 
-	public PantallaPrincipalWindow(WindowOwner owner, String token) {
+	public PantallaPrincipalWindow(WindowOwner owner, String token) throws Exception{
 		super(owner, new PantallaPrincipalViewModel(token));
 	}
 

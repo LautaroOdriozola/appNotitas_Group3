@@ -26,7 +26,8 @@ public class ParserJson {
 		String firstName = (String) jsonObjeto.get("first_name");
 		String lastName = (String) jsonObjeto.get("last_name");
 			
-		int legajo = (int) jsonObjeto.get("code");		
+		String legajoEnString = (String) jsonObjeto.get("code");
+		int legajo = Integer.parseInt(legajoEnString);
 		String usuarioGitHub = (String) jsonObjeto.get("github_user");		
 		
 		Estudiante estudianteParseado = new Estudiante();

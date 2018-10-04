@@ -19,7 +19,7 @@ public class ModificarDatosAlumnoViewModel{
 	String tokenActual;
 
 	public ModificarDatosAlumnoViewModel(String token) {
-		this.tokenActual = token;	
+		this.tokenActual = token;
 	}
 
 	public Estudiante estudianteActual() {

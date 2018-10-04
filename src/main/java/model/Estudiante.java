@@ -16,6 +16,10 @@ public class Estudiante{
 	List<Asignacion> asignaciones;
 	String usuarioGithub;
 	
+	public Estudiante(){
+		
+	}
+	
 	/*
 	public Estudiante(String _n, int _l, String _u){		
 		nombre = _n;

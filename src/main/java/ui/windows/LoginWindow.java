@@ -34,11 +34,18 @@ public class LoginWindow extends Dialog<LoginViewModel> {
 
 	@Override
 	protected void addActions(Panel actions) {
-		new Button(actions).setCaption("Ingresar").onClick(this::ingresar);
+		new Button(actions).setCaption("Ingresar").onClick(() -> {
+			try {
+				ingresar();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
 		new Button(actions).setCaption("Cancelar").onClick(this::cancel);
 	}
 
-	private void ingresar() {
+	private void ingresar() throws Exception {
 		
 		//intento ingresar
 		this.getModelObject().ingresar();

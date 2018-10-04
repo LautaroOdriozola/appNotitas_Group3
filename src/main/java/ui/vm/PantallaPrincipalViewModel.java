@@ -16,13 +16,18 @@ public class PantallaPrincipalViewModel {
 	private String token;
 
 	
-	public PantallaPrincipalViewModel(String token) {		
+	public PantallaPrincipalViewModel(String tokenNuevo) throws Exception{		
 		//esta hardcodeado desde el fixture, estoy seteada yo (nay)
 		
-		estudianteActual = RepoEstudiantes.getInstance().getEstudianteSeleccionado();	
+		//estudianteActual = RepoEstudiantes.getInstance().getEstudianteSeleccionado();
 		
+		this.token = tokenNuevo;
 		
-		this.token = token;
+		RequestService req = new RequestService();
+		String json = req.getDatosAlumno("", token);
+		
+		this.estudianteActual = ParserJson.getInstance().parsearEstudiante(json);
+		
 	}
 
 	public Estudiante getEstudianteActual() {
@@ -38,18 +43,22 @@ public class PantallaPrincipalViewModel {
 	}
 	
 	//TODO: Comento metodo porque todavia no devuelve nada en concreto.
-	/*public List<Asignacion> getAsignaciones() {
-		
+	public List<Asignacion> getAsignaciones() {
+		/*
 		JSONConverter convertidor = new JSONConverter();
 		String alumnoEnJSON = convertidor.convertirEstudiateAJSON(estudianteActual);
 		
 		RequestService reqser = new RequestService();
 		String asignacionesJSON = reqser.getDatosAsignaciones(alumnoEnJSON, this.token);
+		*/
+		
 		
 		//TODO: this.asignaciones = convertidor.desconvertirNotas(asignacionesJSON);
 		
 		// return this.asignaciones;
-	}*/
+		
+		return estudianteActual.getAsignaciones();
+	}
 	
 	public void setAsignaciones(List<Asignacion> _asigns) {
 		this.asignaciones = _asigns;
