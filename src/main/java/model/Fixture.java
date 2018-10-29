@@ -22,15 +22,21 @@ public class Fixture {
 		lautaroOdriozola.setLegajo(1566076);
 		lautaroOdriozola.setusuarioGithub("lautaroOdriozola");
 		
-		Asignacion tpArena = new Asignacion("TP ARENA", false);
+		Asignacion tpArena = new Asignacion();
+		tpArena.setNombre("TP ARENA");
+		tpArena.setCalifNumerica(false);
 		tpArena.crearLista();
 		tpArena.agregarNota("B");
 		tpArena.agregarNota("R");
-		Asignacion operativos = new Asignacion("Sistemas operativos", true);
+		Asignacion operativos = new Asignacion();
+		operativos.setNombre("Sistemas operativos");
+		operativos.setCalifNumerica(true);
 		operativos.crearLista();
 		operativos.agregarNota("8");
 		operativos.agregarNota("9");
-		Asignacion matsuperior = new Asignacion("Matematica superior", true);
+		Asignacion matsuperior = new Asignacion();
+		matsuperior.setNombre("MATEMATICA SUPERIOR");
+		matsuperior.setCalifNumerica(true);
 		matsuperior.crearLista();
 		matsuperior.agregarNota("6");
 		matsuperior.agregarNota("10");

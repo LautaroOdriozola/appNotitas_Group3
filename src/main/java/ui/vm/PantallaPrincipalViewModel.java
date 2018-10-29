@@ -6,6 +6,7 @@ import model.*;
 import repositories.RepoEstudiantes;
 import requestService.RequestService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Observable
@@ -17,16 +18,17 @@ public class PantallaPrincipalViewModel {
 
 	
 	public PantallaPrincipalViewModel(String tokenNuevo) throws Exception{		
-		//esta hardcodeado desde el fixture, estoy seteada yo (nay)
-		
-		//estudianteActual = RepoEstudiantes.getInstance().getEstudianteSeleccionado();
-		
+
 		this.token = tokenNuevo;
 		
 		RequestService req = new RequestService();
-		String json = req.getDatosAlumno("", token);
 		
+		String json = req.getDatosAlumno("", token);	
+		
+		String asignacionesJSON = req.getDatosAsignaciones("", this.token);
+				
 		this.estudianteActual = ParserJson.getInstance().parsearEstudiante(json);
+		this.asignaciones = ParserJson.getInstance().parsearNotas(asignacionesJSON);
 		
 	}
 
@@ -43,19 +45,10 @@ public class PantallaPrincipalViewModel {
 	}
 	
 	//TODO: Comento metodo porque todavia no devuelve nada en concreto.
-	public List<Asignacion> getAsignaciones() {
-		
-		
-		RequestService reqser = new RequestService();
-		String asignacionesJSON = reqser.getDatosAsignaciones("", this.token);
-		
-		
-		
+	public List<Asignacion> getAsignaciones() {		
 		//TODO: this.asignaciones = convertidor.desconvertirNotas(asignacionesJSON);
-		
-		// return this.asignaciones;
-		
-		return estudianteActual.getAsignaciones();
+		return this.asignaciones;
+
 	}
 	
 	public void setAsignaciones(List<Asignacion> _asigns) {

@@ -14,10 +14,17 @@ public class Asignacion{
 	boolean califNumerica;
 	List<String> notas;// = new ArrayList<String>();
 	
-	public Asignacion(String _nombre, boolean _califNum){
-		nombre = _nombre;
-		califNumerica = _califNum;
+	public Asignacion(){
+		this.notas = new ArrayList<String>();
 	}
+	
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	
+	public void setCalifNumerica(boolean calif) {
+		this.califNumerica = calif;
+	}	
 	
 	public void setUltimaNota(String nota) {
 		this.ultimaNota = nota;

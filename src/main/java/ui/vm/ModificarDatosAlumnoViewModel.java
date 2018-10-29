@@ -71,6 +71,12 @@ public class ModificarDatosAlumnoViewModel{
 		estudianteNuevo.setNombre(this.nombre);
 		estudianteNuevo.setApellido(this.apellido);
 		
+		System.out.println("Nombre: " + estudianteNuevo.getNombre());
+		System.out.println("Apellido: " + estudianteNuevo.getApellido());
+		System.out.println("Legajo: " + estudianteNuevo.getLegajo());
+		System.out.println("User Github: " + estudianteNuevo.getusuarioGithub());
+		
+		
 		JSONConverter convertidor = new JSONConverter();
 		String estudianteJSON = convertidor.convertirEstudiateAJSON(estudianteNuevo);
 		

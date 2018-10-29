@@ -1,11 +1,13 @@
 package model;
 import java.util.ArrayList;
+
 import java.util.Iterator;
 import java.util.List;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject; 
-import org.json.simple.parser.*;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 
 public class ParserJson {	
@@ -19,16 +21,14 @@ public class ParserJson {
 	//Asumo que le llega el json en forma de STRING ( SE PUEDE CAMBIAR )
 	public Estudiante parsearEstudiante(String jsonEstudiante) throws Exception {
 		
-		Object objeto = new JSONParser().parse(jsonEstudiante);
+		JsonElement jelement = new JsonParser().parse(jsonEstudiante);
 		
-		JSONObject jsonObjeto = (JSONObject) objeto;		
+		JsonObject gsonObj = jelement.getAsJsonObject();
 		
-		String firstName = (String) jsonObjeto.get("first_name");
-		String lastName = (String) jsonObjeto.get("last_name");
-			
-		String legajoEnString = (String) jsonObjeto.get("code");
-		int legajo = Integer.parseInt(legajoEnString);
-		String usuarioGitHub = (String) jsonObjeto.get("github_user");		
+		int legajo = gsonObj.get("code").getAsInt();
+		String firstName = gsonObj.get("first_name").getAsString();
+		String lastName = gsonObj.get("last_name").getAsString();
+		String usuarioGitHub = gsonObj.get("github_user").getAsString();		
 		
 		Estudiante estudianteParseado = new Estudiante();
 		estudianteParseado.setNombre(firstName);
@@ -39,42 +39,37 @@ public class ParserJson {
 		return estudianteParseado;		// Devuelvo un nuevo estudiante en un objeto.
 	}
 	
-	// TODO:: No meto nada en la lista todavia porque hay que definir como armamos las notas 
-	// El json ya esta parseado
-	public ArrayList<Asignacion> parsearNotas(String jsonNotas) throws Exception{
 	
-		ArrayList<Asignacion> lista = new ArrayList<Asignacion>();
+	public List<Asignacion> parsearNotas(String jsonNotas) throws Exception{
+	
+		List<Asignacion> lista = new ArrayList<Asignacion>();
 		
-		Object objeto = new JSONParser().parse(jsonNotas);		
-		JSONObject jsonObjeto = (JSONObject) objeto;
-		
-		
-		JSONArray jsonArray = (JSONArray) jsonObjeto.get("assignments"); 
-		Iterator iterator1 = jsonArray.iterator();
+		JsonElement jelement = new JsonParser().parse(jsonNotas);		
 
-		while(iterator1.hasNext()) {
-			JSONObject jsonObjetoAux = (JSONObject) iterator1.next();
+		JsonObject gsonObj = jelement.getAsJsonObject();
+		
+		JsonArray assignments = gsonObj.get("assignments").getAsJsonArray();
+		
+		for(JsonElement assign : assignments) {		
+						
+			JsonObject materia = assign.getAsJsonObject();
 			
-			//Obtengo id, title y descripcion
-			int id = (int)jsonObjetoAux.get("id");			
-			String title = (String)jsonObjetoAux.get("title");
-			String description = (String)jsonObjetoAux.get("description");
-			
-			//Obtengo grades
-			JSONArray jsonArrayGrades = (JSONArray) jsonObjeto.get("grades"); 
-			Iterator iterator2 = jsonArray.iterator();
-			
-			while(iterator2.hasNext()) {
-				JSONObject jsonObjetoAux2 = (JSONObject) iterator2.next();
-				
-				//Obtengo id, value y fechas.
-				int idGrade = (int)jsonObjetoAux2.get("id");
-				String value = (String)jsonObjetoAux2.get("value");		//TODO: saco el value como STRING pero puede ser INT
-				String created = (String)jsonObjetoAux2.get("created_at");
-				String updated = (String)jsonObjetoAux2.get("updated_at");				
-			}
-			
+			 int id = materia.get("id").getAsInt();
+			 String title = materia.get("title").getAsString();
+			 String description = materia.get("description").getAsString();
+			 
+			 JsonArray notas = materia.get("grades").getAsJsonArray();
+			 
+			 for(JsonElement nota : notas) {
+				 int idNota = materia.get("id").getAsInt();
+				 String value = materia.get("value").getAsString();
+				 String created_at = materia.get("created_at").getAsString();
+				 String updated_at = materia.get("updated_at").getAsString();					 
+			 }			 
 		}
+		
+		
+		
 		
 			
 		return lista;

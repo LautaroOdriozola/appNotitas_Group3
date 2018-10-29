@@ -45,6 +45,8 @@ public class PantallaPrincipalWindow extends Dialog<PantallaPrincipalViewModel> 
 		columnaAprobo.setFixedSize(100);
 		columnaAprobo.bindContentsToProperty("estado");
 
+		
+		
 		form.setWidth(2000);
 		tablaAsignaciones.setHeight(300);
 		tablaAsignaciones.setWidth(600);
