@@ -25,7 +25,12 @@ public class PantallaPrincipalWindow extends Dialog<PantallaPrincipalViewModel> 
 	@Override
 	protected void createFormPanel(Panel mainPanel) {
 		Panel form = new Panel(mainPanel);
-		this.setTitle("Bienvenido al sistema de gestion de notas");
+		this.setTitle("Bienvenido al sistema de gestion de notas");		
+		
+		Estudiante estudiante = this.getModelObject().getEstudianteActual();
+		new Label(form).setText("Nombre: " + estudiante.getNombre());		
+		new Label(form).setText("Apellido: " + estudiante.getApellido());
+		new Label(form).setText("Legajo: " + estudiante.getLegajo());
 
 		Table tablaAsignaciones = new Table<>(form, Asignacion.class);
 		tablaAsignaciones.bindItemsToProperty("asignaciones");
