@@ -3,6 +3,7 @@ package ui.vm;
 import org.uqbar.commons.utils.Observable;
 
 import model.*;
+import requestService.RequestService;
 
 import java.util.List;
 
@@ -35,7 +36,12 @@ public class LoginViewModel {
 	
 	public void ingresar() {
 		//hardcodeado con el token que esta en el tp. 
-		this.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIxMTEyMjIzMzMiLCJybmQiOiJ5SXNmZFIwN2lIR3BRRmVjYU9KT2VRPT0ifQ.9pVJGUXhrJPQ-TptNCt971l0h_1dWqWgMrHAWXJchho";
+		//this.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIxMTEyMjIzMzMiLCJybmQiOiJ5SXNmZFIwN2lIR3BRRmVjYU9KT2VRPT0ifQ.9pVJGUXhrJPQ-TptNCt971l0h_1dWqWgMrHAWXJchho";
+		
+		RequestService req = new RequestService();
+		String token = req.getToken(this.usuario, this.contrasenia);
+		
+		this.token=token;
 	}
 	
 	public boolean logueoCorrecto() {
