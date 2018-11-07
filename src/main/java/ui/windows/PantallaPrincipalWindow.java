@@ -2,6 +2,7 @@ package ui.windows;
 
 import org.uqbar.arena.bindings.ObservableProperty;
 
+
 import org.uqbar.arena.bindings.PropertyAdapter;
 import org.uqbar.arena.layout.ColumnLayout;
 import org.uqbar.arena.widgets.*;
@@ -14,7 +15,6 @@ import org.uqbar.lacar.ui.model.ListBuilder;
 import org.uqbar.lacar.ui.model.bindings.Binding;
 import ui.vm.*;
 import model.*;
-import repositories.RepoEstudiantes;
 
 public class PantallaPrincipalWindow extends Dialog<PantallaPrincipalViewModel> {
 

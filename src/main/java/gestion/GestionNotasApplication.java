@@ -1,10 +1,8 @@
 package gestion;
 import org.uqbar.arena.Application;
 
-
 import org.uqbar.arena.windows.Window;
 
-import model.Fixture;
 import requestService.RequestService;
 import ui.windows.*;
 
