@@ -42,11 +42,8 @@ public class PantallaPrincipalViewModel {
 		estudianteActual = _a;
 	}
 	
-	//TODO: Comento metodo porque todavia no devuelve nada en concreto.
 	public List<Asignacion> getAsignaciones() {		
-		//TODO: this.asignaciones = convertidor.desconvertirNotas(asignacionesJSON);
 		return this.asignaciones;
-
 	}
 	
 	public void setAsignaciones(List<Asignacion> _asigns) {

@@ -12,11 +12,9 @@ public class Asignacion{
 	String estado;
 	
 	boolean califNumerica;
-	List<String> notas;// = new ArrayList<String>();
+	List<String> notas;
 	
-	public Asignacion(){
-		//this.notas = new ArrayList<String>();
-	}
+	public Asignacion(){}
 	
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
@@ -44,7 +42,6 @@ public class Asignacion{
 		
 	public void agregarNota(String n) {
 		notas.add(n);
-		//add agrega al final
 	}
 	
 	public String getNombre() {

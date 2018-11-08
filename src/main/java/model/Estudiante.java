@@ -16,16 +16,8 @@ public class Estudiante{
 	List<Asignacion> asignaciones;
 	String usuarioGithub;
 	
-	public Estudiante(){
-		
-	}
-	
-	/*
-	public Estudiante(String _n, int _l, String _u){		
-		nombre = _n;
-		legajo = _l;
-		usuarioGithub = _u;		
-	}*/
+	public Estudiante(){}
+
 	
 	public void crearListaAsignaciones() {
 		asignaciones = new ArrayList<Asignacion>();

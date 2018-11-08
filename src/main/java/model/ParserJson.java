@@ -18,7 +18,6 @@ public class ParserJson {
 		return instance;
 	}	
 
-	//Asumo que le llega el json en forma de STRING ( SE PUEDE CAMBIAR )
 	public Estudiante parsearEstudiante(String jsonEstudiante) throws Exception {
 		
 		JsonElement jelement = new JsonParser().parse(jsonEstudiante);
@@ -62,46 +61,5 @@ public class ParserJson {
 		estudianteParseado.setAsignaciones(asignaciones);
 		
 		return estudianteParseado;		// Devuelvo un nuevo estudiante en un objeto.
-	}
-	
-	
-	/*public List<Asignacion> parsearNotas(String jsonNotas) throws Exception{
-	
-		List<Asignacion> lista = new ArrayList<Asignacion>();
-		
-		JsonElement jelement = new JsonParser().parse(jsonNotas);		
-
-		JsonObject gsonObj = jelement.getAsJsonObject();
-		
-		JsonArray assignments = gsonObj.get("assignments").getAsJsonArray();
-		
-		for(JsonElement assign : assignments) {		
-						
-			JsonObject materia = assign.getAsJsonObject();
-			
-			 int id = materia.get("id").getAsInt();
-			 String title = materia.get("title").getAsString();
-			 String description = materia.get("description").getAsString();
-			 
-			 JsonArray notas = materia.get("grades").getAsJsonArray();
-			 
-			 for(JsonElement nota : notas) {
-				 
-				 JsonObject notes = nota.getAsJsonObject();
-				 
-				 int idNota = notes.get("id").getAsInt();
-				 String value = notes.get("value").getAsString();
-				 String created_at = notes.get("created_at").getAsString();
-				 String updated_at = notes.get("updated_at").getAsString();					 
-			 }			 
-		}
-		
-		
-		
-		
-			
-		return lista;
-	}*/
-	
-	
+	}	
 }
