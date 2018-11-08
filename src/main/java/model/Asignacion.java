@@ -15,7 +15,7 @@ public class Asignacion{
 	List<String> notas;// = new ArrayList<String>();
 	
 	public Asignacion(){
-		this.notas = new ArrayList<String>();
+		//this.notas = new ArrayList<String>();
 	}
 	
 	public void setNombre(String nombre) {

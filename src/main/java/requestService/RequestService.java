@@ -24,9 +24,9 @@ public class RequestService {
     }
 
     public String getDatosAlumno(String body, String token){
-        ClientResponse responseDatosAlumno = this.client.resource(API_NOTITAS).path(RESOURCE_STUDENT)
-        		.header("Authorization",token)
-                .accept("application/json")
+        ClientResponse responseDatosAlumno = this.client.resource(API_NOTITAS).path(RESOURCE_STUDENT)        		
+        		.header("Authorization",token)    
+        		.accept("application/json")
                 .get(ClientResponse.class);
         
     	if (responseDatosAlumno.getStatus() != 200) {
@@ -39,11 +39,11 @@ public class RequestService {
         
     } 
     
-    public String getToken(String user, String password) {
-    	//String body = "{ \" usuario\" : \"" + user + "\"," + " \"password\":\"" + password + "\"}" ;    	
+    public String getToken(String user, String password) {    	 	
    	
     	ClientResponse response = this.client.resource(API_NOTITAS).path(RESOURCE_TOKEN)
-    			.header("Authorization", user)
+    			.header("User", user)
+    			.header("Password", password)
     			.get(ClientResponse.class);
     	
     	if (response.getStatus() != 200) {

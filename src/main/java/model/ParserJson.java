@@ -25,10 +25,10 @@ public class ParserJson {
 		
 		JsonObject gsonObj = jelement.getAsJsonObject();
 		
-		int legajo = gsonObj.get("code").getAsInt();
-		String firstName = gsonObj.get("first_name").getAsString();
-		String lastName = gsonObj.get("last_name").getAsString();
-		String usuarioGitHub = gsonObj.get("github_user").getAsString();		
+		int legajo = gsonObj.get("legajo").getAsInt();
+		String firstName = gsonObj.get("nombre").getAsString();
+		String lastName = gsonObj.get("apellido").getAsString();
+		String usuarioGitHub = gsonObj.get("usuarioGithub").getAsString();		
 		
 		Estudiante estudianteParseado = new Estudiante();
 		estudianteParseado.setNombre(firstName);
@@ -36,11 +36,36 @@ public class ParserJson {
 		estudianteParseado.setLegajo(legajo);
 		estudianteParseado.setusuarioGithub(usuarioGitHub);
 		
+		estudianteParseado.crearListaAsignaciones();
+		List<Asignacion> asignaciones = new ArrayList<Asignacion>();
+		
+		JsonArray assignments = gsonObj.get("asignaciones").getAsJsonArray();
+		
+		for(JsonElement assign : assignments) {			
+			Asignacion nuevaAsignacion = new Asignacion();			
+			JsonObject materia = assign.getAsJsonObject();			
+			String nombre = materia.get("nombre").getAsString();			
+			
+			nuevaAsignacion.setNombre(nombre);
+			nuevaAsignacion.crearLista();		
+		
+			JsonArray notas = materia.get("notas").getAsJsonArray();
+			
+			for(JsonElement nota : notas) {
+				String note = nota.getAsString();							
+				nuevaAsignacion.agregarNota(note);
+			}			
+				
+		asignaciones.add(nuevaAsignacion);				
+		}
+		
+		estudianteParseado.setAsignaciones(asignaciones);
+		
 		return estudianteParseado;		// Devuelvo un nuevo estudiante en un objeto.
 	}
 	
 	
-	public List<Asignacion> parsearNotas(String jsonNotas) throws Exception{
+	/*public List<Asignacion> parsearNotas(String jsonNotas) throws Exception{
 	
 		List<Asignacion> lista = new ArrayList<Asignacion>();
 		
@@ -61,10 +86,13 @@ public class ParserJson {
 			 JsonArray notas = materia.get("grades").getAsJsonArray();
 			 
 			 for(JsonElement nota : notas) {
-				 int idNota = materia.get("id").getAsInt();
-				 String value = materia.get("value").getAsString();
-				 String created_at = materia.get("created_at").getAsString();
-				 String updated_at = materia.get("updated_at").getAsString();					 
+				 
+				 JsonObject notes = nota.getAsJsonObject();
+				 
+				 int idNota = notes.get("id").getAsInt();
+				 String value = notes.get("value").getAsString();
+				 String created_at = notes.get("created_at").getAsString();
+				 String updated_at = notes.get("updated_at").getAsString();					 
 			 }			 
 		}
 		
@@ -73,7 +101,7 @@ public class ParserJson {
 		
 			
 		return lista;
-	}
+	}*/
 	
 	
 }

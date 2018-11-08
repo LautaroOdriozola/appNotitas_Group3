@@ -23,12 +23,10 @@ public class PantallaPrincipalViewModel {
 		
 		RequestService req = new RequestService();
 		
-		String json = req.getDatosAlumno("", token);	
+		String json = req.getDatosAlumno("", token);
 		
-		String asignacionesJSON = req.getDatosAsignaciones("", this.token);
-				
 		this.estudianteActual = ParserJson.getInstance().parsearEstudiante(json);
-		this.asignaciones = ParserJson.getInstance().parsearNotas(asignacionesJSON);
+		this.asignaciones = estudianteActual.getAsignaciones();
 		
 	}
 

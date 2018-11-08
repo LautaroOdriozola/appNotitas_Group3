@@ -41,7 +41,8 @@ public class LoginViewModel {
 		RequestService req = new RequestService();
 		String token = req.getToken(this.usuario, this.contrasenia);
 		
-		this.token=token;
+		this.token = token;
+		//this.token="aaaa";
 	}
 	
 	public boolean logueoCorrecto() {
