@@ -10,10 +10,10 @@ public class JSONConverter{
 	
 	public String convertirEstudiateAJSON(Estudiante alum) {
 		
-		String aDevolver = "{ \" code\" : \"" +  alum.getLegajo() + "\"," +
-            " \"first_name\":\"" + alum.getNombre() + "\"," + 
-            " \"last_name\":\"" +  alum.getApellido() + "\"," +
-            " \"github_user\":\"" + alum.getusuarioGithub() + "\"}" ;
+		String aDevolver = "{ \"legajo\" : \"" +  alum.getLegajo() + "\"," +
+            " \"nombre\":\"" + alum.getNombre() + "\"," + 
+            " \"apellido\":\"" +  alum.getApellido() + "\"," +
+            " \"usuarioGithub\":\"" + alum.getusuarioGithub() + "\"}" ;
 		
 		return aDevolver;
      	}

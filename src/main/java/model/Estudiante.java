@@ -17,7 +17,6 @@ public class Estudiante{
 	String usuarioGithub;
 	
 	public Estudiante(){}
-
 	
 	public void crearListaAsignaciones() {
 		asignaciones = new ArrayList<Asignacion>();
