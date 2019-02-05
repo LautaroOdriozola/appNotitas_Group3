@@ -1,5 +1,8 @@
 package model;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import model.Estudiante;
 
 public class JSONConverter{
@@ -10,12 +13,10 @@ public class JSONConverter{
 	
 	public String convertirEstudiateAJSON(Estudiante alum) {
 		
-		String aDevolver = "{ \"legajo\" : \"" +  alum.getLegajo() + "\"," +
-            " \"nombre\":\"" + alum.getNombre() + "\"," + 
-            " \"apellido\":\"" +  alum.getApellido() + "\"," +
-            " \"usuarioGithub\":\"" + alum.getusuarioGithub() + "\"}" ;
+		Gson gson = new GsonBuilder().create();
+		String toReturn = gson.toJson(alum);		
 		
-		return aDevolver;
+		return toReturn;
      	}
 	
 }
