@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -19,6 +20,14 @@ public class ParserJson {
 	}	
 
 	public Estudiante parsearEstudiante(String jsonEstudiante) throws Exception {
+		
+		Gson gson = new Gson();
+		Estudiante estudianteParseado = new Estudiante();		
+		estudianteParseado = gson.fromJson(jsonEstudiante, Estudiante.class);
+		
+		return estudianteParseado;
+		
+		/*
 		
 		JsonElement jelement = new JsonParser().parse(jsonEstudiante);
 		
@@ -60,6 +69,6 @@ public class ParserJson {
 		
 		estudianteParseado.setAsignaciones(asignaciones);
 		
-		return estudianteParseado;		// Devuelvo un nuevo estudiante en un objeto.
+		return estudianteParseado;		// Devuelvo un nuevo estudiante en un objeto.*/
 	}	
 }
